@@ -8,7 +8,7 @@ import java.util.List;
 
 public class OrdemDeServico {
     private LocalDate dataEntrada = LocalDate.now();
-    private Customer cliente;
+    private Customer customer;
     private Equipamento equipamento;
     private double valor;
     private List<Servico> servico;
@@ -17,7 +17,7 @@ public class OrdemDeServico {
     }
 
     public OrdemDeServico(Customer cliente, Equipamento equipamento, List<Servico> servico) {
-        this.cliente = cliente;
+        this.customer = cliente;
         this.equipamento = equipamento;
         this.valor = 0.0;
         this.servico = servico;
@@ -27,12 +27,12 @@ public class OrdemDeServico {
         return dataEntrada;
     }
 
-    public Customer getCliente() {
-        return cliente;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCliente(Customer cliente) {
-        this.cliente = cliente;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Equipamento getEquipamento() {
@@ -42,15 +42,6 @@ public class OrdemDeServico {
     public void setEquipamento(Equipamento equipamento) {
         this.equipamento = equipamento;
     }
-
-//    public double getValor() {
-//        double preco = this.servico.forEach(v -> v.getValor());
-//        return valor;
-//    }
-//
-//    public void setValor(double valor) {
-//        this.valor = valor;
-//    }
 
     public List<Servico> getServico() {
         return servico;
@@ -64,7 +55,7 @@ public class OrdemDeServico {
     public String toString() {
         return "OrdemDeServico{" +
                 "dataEntrada=" + dataEntrada +
-                ", cliente=" + cliente +
+                ", customer=" + customer +
                 ", equipamento=" + equipamento +
                 ", valor=" + valor +
                 ", servico=" + servico +

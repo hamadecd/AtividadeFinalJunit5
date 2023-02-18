@@ -38,8 +38,8 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-                "nome='" + name + '\'' +
-                ", telefone='" + phoneNumber + '\'' +
+                "name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", cpf='" + cpf + '\'' +
                 '}';
     }

@@ -10,6 +10,9 @@ public class OrdemDeServicoServiceImpl implements OrdemDeServicoService {
     @Override
     public double valorTotal(OrdemDeServico ordemDeServico) {
         double valorTotal = 0.0;
+        if (ordemDeServico.getServico() == null) {
+            return valorTotal;
+        }
         for (int i = 0; i < ordemDeServico.getServico().size(); i++) {
             valorTotal += ordemDeServico.getServico().get(i).getValor();
         }

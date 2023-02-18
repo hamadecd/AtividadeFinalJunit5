@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import serviceorder.entity.Customer;
 import serviceorder.entity.OrdemDeServico;
-import serviceorder.enums.Equipamento;
 import serviceorder.enums.Servico;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -18,7 +18,7 @@ public class OrdemDeServicoTest {
     private OrdemDeServicoServiceImpl service;
 
     @Mock
-    Customer cliente;
+    Customer customer;
 
     @BeforeEach
     public void beforeEach() {
@@ -26,10 +26,11 @@ public class OrdemDeServicoTest {
     }
 
     @Test
-    public void validaCpfDoClienteNaOrdemDeServico() {
-        var ordemDeServico = new OrdemDeServico(cliente, Equipamento.PC_DESKTOP,
-                new ArrayList<>(Arrays.asList(Servico.FORMATACAO_SEM_BACKUP)));
+    public void validaDataDeEntradaDaOrdemDeServico() {
+        // Given
+        var ordemDeServico = new OrdemDeServico();
 
+        assertEquals(LocalDate.now(), ordemDeServico.getDataEntrada());
     }
 
     @Test
@@ -61,6 +62,15 @@ public class OrdemDeServicoTest {
 
         // Then
         assertEquals(300.0, service.valorTotal(ordemDeServico));
+    }
+
+    @Test
+    public void valorDaOrdemDeServicoDeveSerZeroSeNenhumServicoForAdicionado() {
+        // Given
+        var ordemDeServico = new OrdemDeServico();
+
+        // Then
+        assertEquals(0.0, service.valorTotal(ordemDeServico));
     }
 
 }
