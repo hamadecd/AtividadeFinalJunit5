@@ -2,11 +2,12 @@ package serviceorder.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import serviceorder.entity.Cliente;
+import serviceorder.entity.Customer;
 import serviceorder.entity.OrdemDeServico;
+import serviceorder.enums.Equipamento;
 import serviceorder.enums.Servico;
 
 import java.util.ArrayList;
@@ -14,11 +15,20 @@ import java.util.Arrays;
 
 public class OrdemDeServicoTest {
 
+    private OrdemDeServicoServiceImpl service;
+
     @Mock
-    Cliente cliente;
+    Customer cliente;
+
+    @BeforeEach
+    public void beforeEach() {
+        service = new OrdemDeServicoServiceImpl();
+    }
 
     @Test
-    public void validaInformacoesDoClienteNaOrdemDeServico() {
+    public void validaCpfDoClienteNaOrdemDeServico() {
+        var ordemDeServico = new OrdemDeServico(cliente, Equipamento.PC_DESKTOP,
+                new ArrayList<>(Arrays.asList(Servico.FORMATACAO_SEM_BACKUP)));
 
     }
 
@@ -26,7 +36,6 @@ public class OrdemDeServicoTest {
     public void validaORegistroDeServicos() {
         // Given
         var ordemDeServico = new OrdemDeServico();
-        var service = new OrdemDeServicoServiceImpl();
         ArrayList<Servico> servicoArrayList = new ArrayList<>(Arrays.asList(
                 Servico.FORMATACAO_SEM_BACKUP)
         );
@@ -42,7 +51,6 @@ public class OrdemDeServicoTest {
     public void validaValorTotalComFormatacaoComBackupELimpezaDeNotebook() {
         // Given
         var ordemDeServico = new OrdemDeServico();
-        var service = new OrdemDeServicoServiceImpl();
         ArrayList<Servico> servicoArrayList = new ArrayList<>(Arrays.asList(
                 Servico.FORMATACAO_COM_BACKUP,
                 Servico.LIMPEZA_NOTEBOOK)
